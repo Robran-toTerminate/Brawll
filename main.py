@@ -194,11 +194,12 @@ def punch_animation(damage_dealt):
 
 
 fight_moves = ["Kick","Punch"]
+block_moves = ["High","Low"]
 menu_options = ["Fight", "Block"]
 
 while True:
     menu_selection = select_option(menu_options, False)
-
+    current_block_status = ""
     if menu_selection == "Fight":
 
         selected_action = select_option(fight_moves)
@@ -213,26 +214,61 @@ while True:
             enemie_health -= damage_dealt
             punch_animation(damage_dealt)
 
-        time.sleep(1)
-        print("\033c",end="")
+    elif menu_selection == "Block":
+        current_block_status = select_option(block_moves)
 
-        if enemie_health <= 0:
-            print("---------------")
-            print("")
-            print("")
 
-            print("---------------")
+    #Enemy logik och så
 
-            print("               ")
-            print("    YOU WIN    ")
-            print("               ")
+    if random.randint(0,1) == 1:
+        if current_block_status != "Low":
+            damage_dealt = random.randint(1,4)
+            player_health -= damage_dealt
+    else:
+        if current_block_status != "High":
+            damage_dealt = random.randint(2,3)
+            player_health -= damage_dealt
 
-            print("---------------")
-            print("---------------")
-            print("")
-            print("")
 
-            print("---------------")
+    print("\033c",end="")
 
-            break
+    if player_health <= 0:
+        print("---------------")
+        print("")
+        print("")
+
+        print("---------------")
+
+        print("               ")
+        print("   GAME OVER   ")
+        print("               ")
+
+        print("---------------")
+        print("---------------")
+        print("   YOU LOSE    ")
+        print("               ")
+
+        print("---------------")
+
+        break
+    if enemie_health <= 0:
+        print("---------------")
+        print("")
+        print("")
+
+        print("---------------")
+
+        print("               ")
+        print("    YOU WIN    ")
+        print("               ")
+
+        print("---------------")
+        print("---------------")
+        print("")
+        print("")
+
+        print("---------------")
+
+        break
+        
 
