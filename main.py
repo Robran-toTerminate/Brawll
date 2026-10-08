@@ -52,9 +52,13 @@ player_has_played = False
 player_health = 10
 enemie_health = 10
 
+pow_level = 0
+
 def display_main():
+    global pow_level
+
     print("---------------")
-    print("Your HP :",player_health)
+    print("Player HP:",player_health)
     print("Enemie HP:",enemie_health)
     print("---------------")
 
@@ -63,6 +67,10 @@ def display_main():
     print("  / |    o  o  ")
 
     print("---------------")
+    if pow_level > 5:
+        pow_level = 5
+    powline = " .[" + ("§ "*pow_level + " -"*(5-pow_level)).removesuffix(" ").removeprefix(" ") + "]. "
+    print(powline)
 
 def kick_animation(damage_dealt):
     print("\033c",end="")
@@ -588,6 +596,130 @@ def enemie_blocked_low_animation(damage_dealt):
     print("---------------")
     time.sleep(0.5)
 
+def special_animation():
+    print("\033c",end="")
+
+    print("---------------")
+    print("")
+    print("")
+
+    print("---------------")
+
+    print("   o     =0\   ")
+    print("  lv\     0uo- ")
+    print("  / |    o  o  ")
+
+    print("---------------")
+    time.sleep(0.4)
+
+    print("\033c",end="")
+
+    print("---------------")
+    print("")
+    print("")
+
+    print("---------------")
+
+    print("         =0\   ")
+    print("  lo\     0uo- ")
+    print(" / v |   o  o  ")
+
+    print("---------------")
+    time.sleep(0.2)
+
+    print("\033c",end="")
+
+    print("---------------")
+    print("")
+    print("")
+
+    print("---------------")
+
+    print("  |      =0\   ")
+    print("  |o\     0uo- ")
+    print(" /vuv|   o  o  ")
+
+    print("---------------")
+    time.sleep(0.2)
+
+    print("\033c",end="")
+
+    print("---------------")
+    print("")
+    print("")
+
+    print("---------------")
+
+    print("  /      =0\   ")
+    print("  |o\     0uo- ")
+    print(" /uouv|  o  o  ")
+
+    print("---------------")
+    time.sleep(0.2)
+
+    print("\033c",end="")
+
+    print("---------------")
+    print("")
+    print("")
+
+    print("---------------")
+
+    print("   _     =0\   ")
+    print("  /o|     0uo- ")
+    print(" /Ooou|  o  o  ")
+
+    print("---------------")
+    time.sleep(0.5)
+
+    print("\033c",end="")
+
+    print("---------------")
+    print("")
+    print("")
+
+    print("---------------")
+
+    print("  _      =0\   ")
+    print(" /o|-     0uo- ")
+    print("/Ooou|   o  o  ")
+
+    print("---------------")
+    time.sleep(0.3)
+
+    print("\033c",end="")
+
+    print("---------------")
+    print("")
+    print("")
+
+    print("---------------")
+
+    print("  _      =0\   ")
+    print(" /o|--    0uo- ")
+    print("/Ooou|   o  o  ")
+
+    print("---------------")
+    time.sleep(0.3)
+
+
+    print("\033c",end="")
+
+    print("---------------")
+    print("")
+    print("")
+
+    print("---------------")
+
+    print("  _      =0\   ")
+    print(" /o|---   0uo- ")
+    print("/Oooo|    o  o ")
+
+    print("---------------")
+    time.sleep(2)
+
+
+
 
 
 fight_moves = ["Kick","Punch"]
@@ -595,10 +727,15 @@ block_moves = ["High","Low"]
 menu_options = ["Fight", "Block"]
 
 while True:
+    if pow_level >= 5 and menu_options.__contains__("Special") == False:
+        menu_options.append("Special") 
+
+    
     menu_selection = select_option(menu_options, False)
     current_block_status = ""
     if menu_selection == "Fight":
         player_has_played = True
+        pow_level += 1
 
         selected_action = select_option(fight_moves)
 
@@ -614,8 +751,13 @@ while True:
 
 
     elif menu_selection == "Block":
+        pow_level += 2
         player_has_played = True
         current_block_status = select_option(block_moves)
+
+    elif menu_selection == "Special":
+        special_animation()
+        enemie_health = 0
 
 
 
