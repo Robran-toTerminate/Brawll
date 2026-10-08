@@ -93,7 +93,7 @@ player_has_played = False
 player_health = 10
 enemie_health = 10
 
-pow_level = 5
+pow_level = 0
 
 def display_main():
     global pow_level
