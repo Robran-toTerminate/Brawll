@@ -1,6 +1,45 @@
 import time
 import random
 
+def help_menu():
+    print("\033c",end="")
+
+    print("---------------")
+    print("Enter to confirm")
+    print("")
+    print("---------------")
+
+    print(" Write  W or S ")
+    print("  H for help ")
+    print("")
+
+    print("---------------")
+    print("Fight is 1 POW")
+    print("---------------")
+    print("Block is 2 POW")
+    print("---------------")
+    z = input("")
+
+print("\033c",end="")
+
+print("---------------")
+print("")
+print("")
+print("---------------")
+
+print("               ")
+print("     BRAWL     ")
+print("               ")
+
+print("---------------")
+print("")
+print("---------------")
+print("")
+print("---------------")
+
+time.sleep(1)
+help_menu()
+
 selected_index = 0
 def select_option(selection_options, vertical = True):
     global selected_index
@@ -36,6 +75,8 @@ def select_option(selection_options, vertical = True):
             selected_index -= 1
         elif movement == "":
             return selection_options[selected_index]
+        elif movement == "h":
+            help_menu()
 
         if selected_index <0 or selected_index > len(selection_options)-1:
             selected_index = 0
@@ -69,7 +110,7 @@ def display_main():
     print("---------------")
     if pow_level > 5:
         pow_level = 5
-    powline = " .[" + ("§ "*pow_level + " -"*(5-pow_level)).removesuffix(" ").removeprefix(" ") + "]. "
+    powline = " .[" + (("§ "*pow_level).removesuffix(" ") + (" -"*(5-pow_level)).removesuffix(" ")).removeprefix(" ") + "]. "
     print(powline)
 
 def kick_animation(damage_dealt):
