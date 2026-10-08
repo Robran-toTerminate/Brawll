@@ -93,7 +93,7 @@ player_has_played = False
 player_health = 10
 enemie_health = 10
 
-pow_level = 0
+pow_level = 5
 
 def display_main():
     global pow_level
@@ -111,7 +111,10 @@ def display_main():
     if pow_level > 5:
         pow_level = 5
     powline = " .[" + (("§ "*pow_level).removesuffix(" ") + (" -"*(5-pow_level)).removesuffix(" ")).removeprefix(" ") + "]. "
-    print(powline)
+    if pow_level == 5:
+        print(" SPECIAL READY ")
+    else:
+        print(powline)
 
 def kick_animation(damage_dealt):
     print("\033c",end="")
@@ -768,8 +771,8 @@ block_moves = ["High","Low"]
 menu_options = ["Fight", "Block"]
 
 while True:
-    if pow_level >= 5 and menu_options.__contains__("Special") == False:
-        menu_options.append("Special") 
+    if pow_level >= 5 and fight_moves.__contains__("Special") == False:
+        fight_moves.append("Special") 
 
     
     menu_selection = select_option(menu_options, False)
@@ -789,16 +792,16 @@ while True:
             damage_dealt = random.randint(3,4)
             enemie_health -= damage_dealt
             punch_animation(damage_dealt)
+        elif selected_action == "Special":
+            special_animation()
+            enemie_health = 0
+
 
 
     elif menu_selection == "Block":
         pow_level += 2
         player_has_played = True
         current_block_status = select_option(block_moves)
-
-    elif menu_selection == "Special":
-        special_animation()
-        enemie_health = 0
 
 
 
