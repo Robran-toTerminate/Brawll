@@ -89,7 +89,6 @@ def select_option(selection_options, vertical = True):
 
 
 player_has_played = False
-
 player_health = 10
 enemie_health = 10
 

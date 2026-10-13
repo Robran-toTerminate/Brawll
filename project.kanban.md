@@ -6,16 +6,7 @@
 
 ## To Do
 
-#### add blocking
-<!-- id: task-1791368721995-115 -->
-
-#### add animations
-<!-- id: task-1791368727795-134 -->
-
 ## In Progress
-
-#### Fight moves remove health
-<!-- id: task-1791355702022-24 -->
 
 ## Done
 
@@ -30,3 +21,15 @@
 
 #### Add the character display
 <!-- id: task-1791355294587-20 -->
+
+#### add animations
+<!-- id: task-1791368727795-134 -->
+
+#### Fight moves remove health
+<!-- id: task-1791355702022-24 -->
+
+#### Special attack and loadgrej
+<!-- id: task-1791878221444-681 -->
+
+#### add blocking
+<!-- id: task-1791368721995-115 -->
